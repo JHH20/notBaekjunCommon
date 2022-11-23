@@ -9,6 +9,9 @@ class RunnerEnv:
     EXPECTED_DIR = Path("/expected")
     OUTPUT_DIR = Path("/actual")
     CHROOT_DIR = Path("/chroot")
+    __USR_DIRS = tuple(Path(CHROOT_DIR, "home").iterdir())
+    assert len(__USR_DIRS) == 1
+    HOME_DIR = __USR_DIRS[0]
 
     EXPECTED_CONSOLE = EXPECTED_DIR / "cio"
     EXPECTED_FILE = EXPECTED_DIR / "file"
